@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.container {
+  @apply max-w-4xl mx-auto px-3 sm:px-4;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6;
+}
+
+.section-title {
+  @apply text-lg font-bold text-primary-600 mb-3 border-b border-primary-100 pb-2;
+}
+
+.facility-icon {
+  @apply w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-50 rounded-full mb-2;
+}
+
+.info-label {
+  @apply font-medium text-gray-700 text-sm;
+}
+
+.info-value {
+  @apply text-gray-900;
+}
+
+.tag {
+  @apply bg-gray-100 rounded-full px-3 py-1 text-sm inline-flex items-center;
+}
+
+/* 特色设施背景色 */
+.bg-accent-light {
+  @apply bg-accent-50;
+}
+
+/* 横向滚动列表优化 */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(203, 213, 225, 0.5) transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  height: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background-color: rgba(203, 213, 225, 0.5);
+  border-radius: 20px;
+}
+
+/* 添加一些动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* 改进卡片阴影和过渡效果 */
+.feature-card {
+  @apply bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center transition-all duration-300;
+}
+
+.feature-card:hover {
+  @apply shadow-card transform -translate-y-1;
+}
+
+/* 响应式文本大小 */
+@screen sm {
+  .section-title {
+    @apply text-xl;
+  }
+}
+
+/* 提高移动端可点击元素的大小 */
+.mobile-touch-target {
+  @apply min-h-[44px] min-w-[44px];
+} 
