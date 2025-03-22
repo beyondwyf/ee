@@ -7,7 +7,7 @@
 
 [build.environment]
   NEXT_USE_NETLIFY_EDGE = "true"
-  USE_MOCK_DB = "true"
+  USE_MOCK_DB = "flase"
 
 [[redirects]]
   from = "/*"
