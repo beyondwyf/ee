@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImage, faClose } from '@fortawesome/free-solid-svg-icons';
 import RatingButtons from './RatingButtons';
 import SuccessModal from './SuccessModal';
+import { CleanIcon, ServiceIcon, NoSmellIcon, HygieneIcon, LocationIcon, ImageIcon, CloseIcon } from '../icons';
 
 export default function ReviewForm({ onReviewAdded, bathroom }) {
   const [formData, setFormData] = useState({
@@ -16,11 +15,11 @@ export default function ReviewForm({ onReviewAdded, bathroom }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const availableTags = [
-    '环境整洁',
-    '服务到位',
-    '没有异味',
-    '卫生干净',
-    '位置好找'
+    { text: '环境整洁', icon: CleanIcon },
+    { text: '服务到位', icon: ServiceIcon },
+    { text: '没有异味', icon: NoSmellIcon },
+    { text: '卫生干净', icon: HygieneIcon },
+    { text: '位置好找', icon: LocationIcon }
   ];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -111,14 +110,19 @@ export default function ReviewForm({ onReviewAdded, bathroom }) {
       <div className="mb-4">
         <h3 className="text-lg font-medium mb-2">选择标签</h3>
         <div className="flex flex-wrap gap-2">
-          {availableTags.map((tag) => (
+          {availableTags.map(({ text, icon: Icon }) => (
             <button
-              key={tag}
+              key={text}
               type="button"
-              onClick={() => handleTagClick(tag)}
-              className={`px-3 py-1.5 rounded-full text-sm transition-colors ${formData.tags.includes(tag) ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+              onClick={() => handleTagClick(text)}
+              className={`px-3 py-1.5 rounded-full text-sm transition-colors flex items-center gap-1 ${
+                formData.tags.includes(text) 
+                  ? 'bg-primary text-white' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
             >
-              {tag}
+              <Icon className="w-4 h-4" />
+              {text}
             </button>
           ))}
         </div>
@@ -158,7 +162,7 @@ export default function ReviewForm({ onReviewAdded, bathroom }) {
                   onChange={handleImageChange}
                   className="hidden"
                 />
-                <FontAwesomeIcon icon={faImage} className="text-gray-400 text-xl" />
+                <ImageIcon className="text-gray-400 w-6 h-6" />
               </label>
               {selectedImage && (
                 <div className="relative">
@@ -172,7 +176,7 @@ export default function ReviewForm({ onReviewAdded, bathroom }) {
                     onClick={removeImage}
                     className="absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-md"
                   >
-                    <FontAwesomeIcon icon={faClose} className="text-gray-500 text-sm" />
+                    <CloseIcon className="text-gray-500 w-4 h-4" />
                   </button>
                 </div>
               )}
@@ -190,13 +194,15 @@ export default function ReviewForm({ onReviewAdded, bathroom }) {
               <span className="ml-2">是否有损坏需要报修</span>
             </label>
           </div>
-        
+
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary text-white py-3 rounded-lg text-base font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary"
+            className={`w-full py-3 rounded-lg text-white font-medium transition-colors ${
+              isSubmitting ? 'bg-primary-300' : 'bg-primary hover:bg-primary-600'
+            }`}
           >
-            {isSubmitting ? '提交中...' : '发布评论'}
+            {isSubmitting ? '提交中...' : '提交评论'}
           </button>
         </div>
       </form>

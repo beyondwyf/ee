@@ -7,7 +7,7 @@ const bathroomData = {
   name: "庄桥公厕",
   grade: "一类",
   location: "和平街民主街5-15号小区",
-  code: "",
+  code: "城发五分-NX-0001",
   openingHours: "5:30-22:00",
   facilities: {
     maleCount: 7,
@@ -26,19 +26,18 @@ const bathroomData = {
       "高低位洗手台"
     ],
     specialFeatures: [
-      "尿布台", 
-      "儿童专用设施", 
       "一次性儿童坐垫", 
       "助行器", 
-      "语音播报提醒"
+      "语音播报提醒",
+      "可折叠成人坐凳"
     ]
   },
   services: {
     fee: "免费开放",
     amenities: [
+      "便民箱（清凉四件套、酒精棉、创可贴、碘伏、温度计、卫生巾、一次性内裤、针线包）",
       "卫生纸", 
-      "洗手液", 
-      "便民箱"
+      "洗手液"
     ],
     signage: "周边500米内导向牌、夜间反光标识清晰"
   },
@@ -51,7 +50,7 @@ const bathroomData = {
     openDate: "1990年3月",
     lastRenovation: "2020年9月",
     awards: "美丽公厕",
-    surroundings: "国潮第一镇的南翔古镇：古漪园、南翔老街（双塔、檀园)、留云禅寺等"
+    surroundings: "国潮第一镇的南翔古镇：古漪园、南翔老街（双塔、檀园)、留云禅寺、印象城、山姆超市等"
   },
   userReviews: []
 };
